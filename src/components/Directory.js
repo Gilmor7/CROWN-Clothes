@@ -41,11 +41,8 @@ const Directory = () => {
 
     return (
         <Container>
-            {sections.map(({ id, title, imageUrl, size }) => (
-                <MenuItem key={id}
-                    title={title}
-                    imageUrl={imageUrl}
-                    size={size} />
+            {sections.map(({ id, ...sectionProps }) => (
+                <MenuItem key={id} {...sectionProps} />
             ))}
         </Container>
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 
 import HomePage from './pages/HomePage';
 import GlobalStyles from './styles/global.styles';
@@ -8,7 +9,7 @@ function App() {
     <React.Fragment>
       <GlobalStyles />
       <div>
-        <HomePage />
+        <Route exact path="/" component={HomePage} />
       </div>
     </React.Fragment>
 
