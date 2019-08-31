@@ -11,7 +11,7 @@ body{
     font-size:1.6rem;
     color: #4a4a4a;
     font-family:'Open Sans Condensed' ;
-
+    padding: 2rem 5.5rem;
 }
 
 * {

@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
 
+import { Title } from '../styles/typography'
+
 const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
     return (
         <Container size={size}
@@ -62,10 +64,4 @@ opacity:0.9;
 
 `
 
-const Title = styled.h1`
-text-transform:uppercase;
-font-weight: bold;
-      margin-bottom: .5rem;
-      font-size: 2.2rem;
-`
 
