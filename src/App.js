@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
+import NavBar from './components/NavBar'
 
 import GlobalStyles from './styles/global.styles';
 
@@ -11,8 +12,11 @@ function App() {
     <React.Fragment>
       <GlobalStyles />
       <div>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={ShopPage} />
+        <NavBar />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+        </Switch>
       </div>
     </React.Fragment>
 
