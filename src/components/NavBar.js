@@ -13,9 +13,9 @@ const NavBar = () => {
             </Link>
             <Links>
                 <LinkItem to="/shop" >Shop</LinkItem>
-                <LinkItem>Contact</LinkItem>
-                <LinkItem>Sign in</LinkItem>
-                <LinkItem>Cart</LinkItem>
+                <LinkItem to="/contact">Contact</LinkItem>
+                <LinkItem to="/signin">Sign in</LinkItem>
+                <LinkItem to="/cart">Cart</LinkItem>
             </Links>
         </Nav>
     )
