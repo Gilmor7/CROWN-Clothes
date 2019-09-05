@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { auth } from '../firebase/firebase.utils'
+
 import { ReactComponent as Logo } from '../assets/crown.svg'
 
 
-const NavBar = () => {
+const NavBar = ({ currentUser }) => {
     return (
         <Nav>
             <Link to="/">
@@ -14,7 +16,12 @@ const NavBar = () => {
             <Links>
                 <LinkItem to="/shop" >Shop</LinkItem>
                 <LinkItem to="/contact">Contact</LinkItem>
-                <LinkItem to="/signin">Sign in</LinkItem>
+                {
+                    currentUser ?
+                        <DivLink onClick={() => auth.signOut()}>Sign Out</DivLink>
+                        :
+                        <LinkItem to="/signin">Sign in</LinkItem>
+                }
                 <LinkItem to="/cart">Cart</LinkItem>
             </Links>
         </Nav>
@@ -45,6 +52,13 @@ const LinkItem = styled(Link)`
 text-decoration:none;
 text-transform:uppercase;
 margin-left:2rem;
+`
+
+const DivLink = styled.div`
+text-decoration:none;
+text-transform:uppercase;
+margin-left:2rem;
+cursor:pointer;
 `
 
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { signInWithGoogle } from '../../firebase/firebase.utils'
+
 import FormInput from '../../components/FormInput'
 import CustomButton from '../../components/CustomButton'
 
@@ -47,12 +49,15 @@ const SignIn = () => {
                     required
                     onChange={handleChange} />
 
-                <CustomButton
-                    type="submit"
-                    color="white"
-                    bgColor="black">
-                    Sign in
+                <ButtonsContainer>
+                    <CustomButton type="submit">
+                        Sign in
                     </CustomButton>
+
+                    <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+                        Sign in with google
+                    </CustomButton>
+                </ButtonsContainer>
             </form>
         </Container>
     )
@@ -61,8 +66,13 @@ const SignIn = () => {
 export default SignIn
 
 const Container = styled.div`
-width:30vw;
+width:38rem;
 `
 const Title = styled.h2`
 margin: 1.2rem 0;
+`
+
+const ButtonsContainer = styled.div`
+display:flex;
+justify-content:space-between;
 `
