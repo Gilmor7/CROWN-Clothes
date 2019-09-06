@@ -17,3 +17,12 @@ font-size: 2.5rem;
 export const FormTitle = styled.h2`
 margin: 1.2rem 0;
 `;
+
+export const ErrView = styled.span`
+display:block;
+color:red;
+margin-bottom: 1rem;
+font-size:1.4rem;
+font-weight:bold;
+text-indent:.5rem
+`

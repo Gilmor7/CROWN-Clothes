@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { FormTitle } from '../../styles/typography';
+import { FormTitle, ErrView } from '../../styles/typography';
 
-import { signInWithGoogle } from '../../services/firebase/firebase.auth';
+import { signInWithGoogle, auth } from '../../services/firebase/firebase.auth';
 
 import FormInput from '../../components/FormInput';
 import CustomButton from '../../components/CustomButton';
@@ -15,8 +15,26 @@ const SignIn = () => {
         password: ''
     })
 
-    const handleSubmit = e => {
+    const [err, setErr] = useState(null)
+
+    const handleSubmit = async e => {
         e.preventDefault();
+
+        const { email, password } = state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+
+            setState({
+                email: '',
+                password: ''
+            });
+            setErr(null);
+        }
+        catch (error) {
+            setErr(error.message);
+        }
+
     }
 
     const handleChange = e => {
@@ -25,7 +43,7 @@ const SignIn = () => {
         setState({
             ...state,
             [name]: value
-        })
+        });
     }
 
     return (
@@ -50,6 +68,8 @@ const SignIn = () => {
                     value={state.password}
                     required
                     handleChange={handleChange} />
+
+                {err && <ErrView>{`* ${err}`}</ErrView>}
 
                 <ButtonsContainer>
                     <CustomButton type="submit">

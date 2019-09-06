@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { FormTitle } from '../../styles/typography';
+import { FormTitle, ErrView } from '../../styles/typography';
 
 import { auth } from '../../services/firebase/firebase.auth';
 import { createUserProfileDocument } from '../../services/firebase/firebase.firestore';
@@ -112,12 +112,4 @@ export default SignUp;
 
 const Container = styled.div`
 width:38rem;
-`
-const ErrView = styled.span`
-display:block;
-color:red;
-margin-bottom: 1rem;
-font-size:1.4rem;
-font-weight:bold;
-text-indent:.5rem
 `
