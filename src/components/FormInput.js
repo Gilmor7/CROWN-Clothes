@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { shrinkLabel } from '../styles/mixins'
-import { main_color, sub_color } from '../styles/colors'
+import { shrinkLabel } from '../styles/mixins';
+import { sub_color } from '../styles/colors';
 
 const FormInput = ({ handleChange, label, ...otherProps }) => {
     return (
@@ -19,13 +19,13 @@ const FormInput = ({ handleChange, label, ...otherProps }) => {
     )
 }
 
-export default FormInput
+export default FormInput;
 
 
 const InputGroup = styled.div`
 position:relative;
 margin:4rem 0;
-`
+`;
 
 const InputLabel = styled.label`
 position:absolute;
@@ -38,7 +38,7 @@ transition: 300ms ease all;
 
 ${props => props.shrink ? shrinkLabel() : null}
 
-`
+`;
 
 const Input = styled.input`
 width:100%;
@@ -62,4 +62,4 @@ border-bottom:${sub_color} 1.5px solid;
     ${shrinkLabel()}
 }
 
-`
+`;

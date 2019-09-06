@@ -13,3 +13,7 @@ font-weight: bold;
 margin-bottom: 2rem;
 font-size: 2.5rem;
 `
+
+export const FormTitle = styled.h2`
+margin: 1.2rem 0;
+`;

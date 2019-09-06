@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import MenuItem from './MenuItem';
 
 const Directory = () => {
@@ -48,7 +48,7 @@ const Directory = () => {
     )
 }
 
-export default Directory
+export default Directory;
 
 
 const Container = styled.div`
@@ -56,4 +56,4 @@ width:100%;
 display:flex;
 flex-wrap:wrap;
 justify-content: space-between;
-`
+`;

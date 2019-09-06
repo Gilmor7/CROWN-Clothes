@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => {
     return (
@@ -13,7 +13,7 @@ const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => {
     )
 }
 
-export default CustomButton
+export default CustomButton;
 
 
 const Button = styled.button`
@@ -50,4 +50,4 @@ color:white;
     }
 }
 
-`
+`;

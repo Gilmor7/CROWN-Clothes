@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { FormTitle } from '../../styles/typography';
 
-import FormInput from '../../components/FormInput'
-import CustomButton from '../../components/CustomButton'
+import { signInWithGoogle } from '../../services/firebase/firebase.auth';
+
+import FormInput from '../../components/FormInput';
+import CustomButton from '../../components/CustomButton';
 
 const SignIn = () => {
 
-    const [state, setstate] = useState({
+    const [state, setState] = useState({
         email: '',
         password: ''
     })
@@ -20,7 +22,7 @@ const SignIn = () => {
     const handleChange = e => {
         const { name, value } = e.target;
 
-        setstate({
+        setState({
             ...state,
             [name]: value
         })
@@ -28,7 +30,7 @@ const SignIn = () => {
 
     return (
         <Container>
-            <Title>I already have an account</Title>
+            <FormTitle>I already have an account</FormTitle>
             <span>Sign in with email and password</span>
 
             <form onSubmit={handleSubmit}>
@@ -36,18 +38,18 @@ const SignIn = () => {
                 <FormInput
                     type="email"
                     name="email"
-                    label='email'
+                    label='Email'
                     value={state.email}
                     required
-                    onChange={handleChange} />
+                    handleChange={handleChange} />
 
                 <FormInput
                     type="password"
                     name="password"
-                    label='password'
+                    label='Password'
                     value={state.password}
                     required
-                    onChange={handleChange} />
+                    handleChange={handleChange} />
 
                 <ButtonsContainer>
                     <CustomButton type="submit">
@@ -63,16 +65,13 @@ const SignIn = () => {
     )
 }
 
-export default SignIn
+export default SignIn;
 
 const Container = styled.div`
 width:38rem;
-`
-const Title = styled.h2`
-margin: 1.2rem 0;
 `
 
 const ButtonsContainer = styled.div`
 display:flex;
 justify-content:space-between;
-`
+`;

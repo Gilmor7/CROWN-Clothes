@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { auth } from '../firebase/firebase.utils'
+import { auth } from '../services/firebase/firebase.auth';
 
-import { ReactComponent as Logo } from '../assets/crown.svg'
+import { ReactComponent as Logo } from '../assets/crown.svg';
 
 
 const NavBar = ({ currentUser }) => {
@@ -28,7 +28,7 @@ const NavBar = ({ currentUser }) => {
     )
 }
 
-export default NavBar
+export default NavBar;
 
 
 const Nav = styled.nav`
@@ -38,7 +38,7 @@ justify-content:space-between;
 height:7rem;
 margin-bottom:2.5rem;
 /* border:1px solid black; */
-`
+`;
 
 const Links = styled.div`
 height:100%;
@@ -46,19 +46,19 @@ width:70%;
 display:flex;
 align-items:center;
 justify-content: flex-end;
+`;
 
-`
 const LinkItem = styled(Link)`
 text-decoration:none;
 text-transform:uppercase;
 margin-left:2rem;
-`
+`;
 
 const DivLink = styled.div`
 text-decoration:none;
 text-transform:uppercase;
 margin-left:2rem;
 cursor:pointer;
-`
+`;
 
 
