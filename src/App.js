@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 //firebase imports
 import { auth } from './services/firebase/firebase.auth';
@@ -17,7 +17,7 @@ import AuthPage from './pages/AuthPage/AuthPage';
 
 import GlobalStyles from './styles/global.styles';
 
-function App({ setCurrentUser }) {
+function App({ currentUser, setCurrentUser }) {
 
   const unsubscribeFromAuth = useRef(null);
   const unsubscribeFromSnapShot = useRef(null);
@@ -63,7 +63,13 @@ function App({ setCurrentUser }) {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={AuthPage} />
+          <Route
+            path="/signin"
+            render={() => currentUser ?
+              <Redirect to="/" />
+              :
+              <AuthPage />}
+          />
         </Switch>
       </div>
     </React.Fragment>
@@ -71,8 +77,12 @@ function App({ setCurrentUser }) {
   );
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
