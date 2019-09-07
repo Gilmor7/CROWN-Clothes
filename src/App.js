@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+//firebase imports
 import { auth } from './services/firebase/firebase.auth';
 import { createUserProfileDocument } from './services/firebase/firebase.firestore';
 
+//redux imports
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/actions/user.actions';
+
+//react components imports
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import NavBar from './components/NavBar';
@@ -11,10 +17,10 @@ import AuthPage from './pages/AuthPage/AuthPage';
 
 import GlobalStyles from './styles/global.styles';
 
-function App() {
+function App({ setCurrentUser }) {
 
-  const [currentUser, set_currentUser] = useState(null)
   const unsubscribeFromAuth = useRef(null);
+  const unsubscribeFromSnapShot = useRef(null);
 
   useEffect(() => {
     //subscribe for auth state changes and save the 
@@ -28,31 +34,32 @@ function App() {
 
           //listen to snapshot changes and set the currentUser 
           // with the snaphot user data we get
-          userRef.onSnapshot(snapshot => {
-            set_currentUser({
+          unsubscribeFromSnapShot.current = userRef.onSnapshot(snapshot => {
+            setCurrentUser({
               id: snapshot.id,
               ...snapshot.data()
-            })
-          })
+            });
+          });
 
         }
 
         //there is not authenticated user so set to current user to null
-        else set_currentUser(userAuth);
+        else setCurrentUser(userAuth);
 
       })
 
     return () => {
-      unsubscribeFromAuth.current()
+      unsubscribeFromAuth.current();
+      unsubscribeFromSnapShot.current();
     };
 
-  }, [])
+  }, []);
 
   return (
     <React.Fragment>
       <GlobalStyles />
       <div>
-        <NavBar currentUser={currentUser} />
+        <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
@@ -64,4 +71,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);
