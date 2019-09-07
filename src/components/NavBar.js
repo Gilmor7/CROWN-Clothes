@@ -7,6 +7,8 @@ import { auth } from '../services/firebase/firebase.auth';
 
 import { ReactComponent as Logo } from '../assets/crown.svg';
 
+import CartIcon from './CartIcon';
+import CartDropdDown from './CartDropdDown';
 
 const NavBar = ({ currentUser }) => {
     return (
@@ -23,8 +25,9 @@ const NavBar = ({ currentUser }) => {
                         :
                         <LinkItem to="/signin">Sign in</LinkItem>
                 }
-                <LinkItem to="/cart">Cart</LinkItem>
+                <CartIcon />
             </Links>
+            <CartDropdDown isVisible />
         </Nav>
     )
 }
