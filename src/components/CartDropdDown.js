@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 import CustomButton from './CustomButton';
 
-const CartDropdDown = ({ isVisible }) => {
+const CartDropdDown = () => {
     return (
-        <Container isVisible={isVisible}>
+        <Container>
             <CartItems />
             <CustomButton>
                 Go To Checkout
@@ -16,10 +16,11 @@ const CartDropdDown = ({ isVisible }) => {
     )
 }
 
+
 export default CartDropdDown;
 
 const Container = styled.div`
-display: ${({ isVisible }) => isVisible ? 'flex' : 'none'};
+display:flex;
 flex-direction:column;
 align-items:center;
 height: 34rem;

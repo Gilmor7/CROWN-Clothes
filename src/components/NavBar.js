@@ -10,7 +10,7 @@ import { ReactComponent as Logo } from '../assets/crown.svg';
 import CartIcon from './CartIcon';
 import CartDropdDown from './CartDropdDown';
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, hidden }) => {
     return (
         <Nav>
             <Link to="/">
@@ -27,13 +27,14 @@ const NavBar = ({ currentUser }) => {
                 }
                 <CartIcon />
             </Links>
-            <CartDropdDown isVisible />
+            {hidden ? null : <CartDropdDown />}
         </Nav>
     )
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+    currentUser,
+    hidden
 })
 
 export default connect(mapStateToProps)(NavBar);
