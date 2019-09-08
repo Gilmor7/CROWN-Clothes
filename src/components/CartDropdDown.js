@@ -4,11 +4,16 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import CustomButton from './CustomButton';
+import CartItem from './CartItem';
 
-const CartDropdDown = () => {
+const CartDropdDown = ({ cartItems }) => {
     return (
         <Container>
-            <CartItems />
+            <CartItems>
+                {cartItems.map(item => (
+                    <CartItem key={item.id} item={item} />
+                ))}
+            </CartItems>
             <CustomButton>
                 Go To Checkout
             </CustomButton>
@@ -17,7 +22,11 @@ const CartDropdDown = () => {
 }
 
 
-export default CartDropdDown;
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+    cartItems
+})
+
+export default connect(mapStateToProps)(CartDropdDown);
 
 const Container = styled.div`
 display:flex;
