@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ShoppingIcon } from '../assets/shopping-bag.svg';
+import { createStructuredSelector } from 'reselect'
 
 import { connect } from 'react-redux';
 import { toggleCartHidden } from '../redux/actions/cart.actions';
+import { cartItemsCountSelector } from '../redux/selectors/cart.selectors';
 
-const CartIcon = ({ toggleCartHidden }) => {
+const CartIcon = ({ toggleCartHidden, itemCount }) => {
+    console.log('cartIcon rendered')
     return (
         <IconContainer onClick={toggleCartHidden}>
             <Icon />
-            <NumItems>0</NumItems>
+            <NumItems>{itemCount}</NumItems>
         </IconContainer>
     )
 }
@@ -18,7 +21,11 @@ const mapDispatchToProps = dispatch => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 });
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+const mapStateToProps = createStructuredSelector({
+    itemCount: cartItemsCountSelector
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
 
 const IconContainer = styled.div`
   width: 4.5rem;
@@ -38,7 +45,7 @@ const Icon = styled(ShoppingIcon)`
 
 const NumItems = styled.span`
     position: absolute;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     bottom:1.2rem;
 `

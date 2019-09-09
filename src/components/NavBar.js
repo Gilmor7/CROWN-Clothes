@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect'
 import styled from 'styled-components';
+
+import { carthiddenSelector } from '../redux/selectors/cart.selectors'
+import { currentUserSelector } from '../redux/selectors/user.selectors'
 
 import { auth } from '../services/firebase/firebase.auth';
 
@@ -32,9 +36,9 @@ const NavBar = ({ currentUser, hidden }) => {
     )
 }
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-    currentUser,
-    hidden
+const mapStateToProps = createStructuredSelector({
+    hidden: carthiddenSelector,
+    currentUser: currentUserSelector
 })
 
 export default connect(mapStateToProps)(NavBar);
