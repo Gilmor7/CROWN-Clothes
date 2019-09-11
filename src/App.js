@@ -15,6 +15,7 @@ import { currentUserSelector } from './redux/selectors/user.selectors';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import NavBar from './components/NavBar';
+import CheckOutPage from './pages/CheckOutPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 
 import GlobalStyles from './styles/global.styles';
@@ -65,6 +66,7 @@ function App({ currentUser, setCurrentUser }) {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckOutPage} />
           <Route
             path="/signin"
             render={() => currentUser ?
