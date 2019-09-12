@@ -8,7 +8,6 @@ import { toggleCartHidden } from '../redux/actions/cart.actions';
 import { cartItemsCountSelector } from '../redux/selectors/cart.selectors';
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => {
-    console.log('cartIcon rendered')
     return (
         <IconContainer onClick={toggleCartHidden}>
             <Icon />

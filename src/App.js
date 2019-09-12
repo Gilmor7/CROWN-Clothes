@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect';
 
 //firebase imports
 import { auth } from './services/firebase/firebase.auth';
@@ -18,7 +18,6 @@ import NavBar from './components/NavBar';
 import CheckOutPage from './pages/CheckOutPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 
-import GlobalStyles from './styles/global.styles';
 
 function App({ currentUser, setCurrentUser }) {
 
@@ -59,24 +58,21 @@ function App({ currentUser, setCurrentUser }) {
   }, []);
 
   return (
-    <React.Fragment>
-      <GlobalStyles />
-      <div>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckOutPage} />
-          <Route
-            path="/signin"
-            render={() => currentUser ?
-              <Redirect to="/" />
-              :
-              <AuthPage />}
-          />
-        </Switch>
-      </div>
-    </React.Fragment>
+    <div>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={CheckOutPage} />
+        <Route
+          path="/signin"
+          render={() => currentUser ?
+            <Redirect to="/" />
+            :
+            <AuthPage />}
+        />
+      </Switch>
+    </div>
 
   );
 }

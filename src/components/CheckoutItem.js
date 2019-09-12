@@ -19,7 +19,7 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, decreaseQuantity }) => {
                 <Value>{quantity}</Value>
                 <Arrow onClick={() => addItem(cartItem)}>&#10097;</Arrow>
             </Quantity>
-            <Span>{price}$</Span>
+            <Price>{price}$</Price>
             <RemoveButton onClick={() => clearItem(cartItem)}> &#10006; </RemoveButton>
 
         </Container>
@@ -59,7 +59,7 @@ width:21%;
 `
 
 const Quantity = styled(Span)`
-padding-left:1.5rem;
+padding-left:1.2rem;
 display:flex;
 `
 
@@ -71,6 +71,9 @@ const Value = styled.span`
 margin: 0 1rem;
 `
 
+const Price = styled(Span)`
+padding-left: 1rem;
+`
 
 const RemoveButton = styled.div`
 cursor:pointer;
