@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import userReducer from './user.reducer';
 import cartReducer from './cart.reducer';
 import directoryReducer from './directory.reducer';
+import shopReducer from './shop.reducer';
 
 
 //set redux-persist configuration for the cart reducer
@@ -20,7 +21,8 @@ const cartPersistConfig = {
 const rootReducer = combineReducers({
     user: userReducer,
     cart: persistReducer(cartPersistConfig, cartReducer),
-    directory: directoryReducer
+    directory: directoryReducer,
+    shop: shopReducer
 });
 
 
