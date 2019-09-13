@@ -49,7 +49,7 @@ background-position:center;
 `
 
 const Container = styled.div`
-width: 22vw;
+width: 20vw;
 height:35rem;
 display: flex;
 flex-direction: column;

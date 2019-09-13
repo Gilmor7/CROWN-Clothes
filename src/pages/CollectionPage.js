@@ -31,7 +31,7 @@ export default connect(mapStateToProps)(CollectionPage);
 const Container = styled.div`
 display:flex;
 flex-direction:column;
-margin-bottom: 3rem;
+margin-bottom: 4rem;
 `
 
 const Title = styled.h2`
@@ -43,6 +43,6 @@ text-transform: capitalize;
 const CollectionContainer = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
-row-gap: 3rem;
+row-gap: 4rem;
 column-gap:1rem;
 `
