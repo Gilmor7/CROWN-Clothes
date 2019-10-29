@@ -16,3 +16,8 @@ export const collectionSelector = collectionUrlParam => createSelector(
     shopCollectionsSelector,
     collections => collections[collectionUrlParam]
 );
+
+export const shopCollectionExist = createSelector(
+    shopCollectionsSelector,
+    collections => collections !== null
+)
