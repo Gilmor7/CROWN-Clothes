@@ -25,7 +25,7 @@ const NavBar = ({ currentUser, hidden }) => {
                 <LinkItem to="/contact">Contact</LinkItem>
                 {
                     currentUser ?
-                        <DivLink onClick={() => auth.signOut()}>Sign Out</DivLink>
+                        <LinkItem as='div' onClick={() => auth.signOut()}>Sign Out</LinkItem>
                         :
                         <LinkItem to="/signin">Sign in</LinkItem>
                 }
@@ -65,13 +65,9 @@ const LinkItem = styled(Link)`
 text-decoration:none;
 text-transform:uppercase;
 margin-left:2rem;
-`;
-
-const DivLink = styled.div`
-text-decoration:none;
-text-transform:uppercase;
-margin-left:2rem;
 cursor:pointer;
 `;
+
+
 
 

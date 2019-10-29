@@ -1,24 +1,59 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const CustomButton = ({ children, isGoogleSignIn, inverted, ...otherProps }) => {
+const CustomButton = ({ children, ...props }) => {
     return (
-        <Button
-            isGoogleSignIn={isGoogleSignIn}
-            inverted={inverted}
-            {...otherProps}>
-
+        <ButtonContainer {...props}>
             {children}
-
-        </Button>
+        </ButtonContainer>
     )
 }
 
 export default CustomButton;
 
-
-const Button = styled.button`
+const GoogleSignInStyles = css`
+background-color:#4285f4;
+color:white;
 border:none;
+
+&:hover{
+    background-color:#357ae8;
+}
+`;
+
+const invertedButtonStyles = css`
+color:black;
+background-color:white;
+border: 1px solid black;
+
+&:hover{
+    background-color:black;
+    color:white;
+}
+`;
+
+const defaultButtonStyles = css`
+background-color:black;
+color:white;
+border:none;
+
+&:hover{
+    color:black;
+    background-color:white;
+    border: 1px solid black;
+}
+`;
+
+const setStylesRelatedToProps = props => {
+    if (props.isGoogleSignIn) {
+        return GoogleSignInStyles;
+    }
+    else return props.inverted ? invertedButtonStyles : defaultButtonStyles;
+}
+
+
+
+const ButtonContainer = styled.button`
 height:5rem;
 min-width:16rem;
 width: auto;
@@ -27,30 +62,8 @@ font-family: 'Open Sans Condensed';
 font-size:1.5rem;
 text-transform: uppercase;
 letter-spacing:.5px;
-color:${({ inverted }) => inverted ? 'black' : 'white'};
-background-color:${({ inverted }) => inverted ? 'white' : 'black'};;
 cursor:pointer;
 
-${props => props.isGoogleSignIn ?
-        `
-background-color:#4285f4;
-`
-        : null
-    }
-
-&:hover{
-    color:${({ inverted }) => inverted ? 'white' : 'black'};
-    background-color:${({ inverted }) => inverted ? 'black' : 'white'};
-    border: 1px solid black;
-
-    ${props => props.isGoogleSignIn ?
-        `
-          background-color:#357ae8;
-          border:none;
-          color:white;
-        `
-        : null
-    }
-}
+${setStylesRelatedToProps}
 
 `;
