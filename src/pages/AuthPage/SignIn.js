@@ -13,9 +13,9 @@ const SignIn = () => {
     const [state, setState] = useState({
         email: '',
         password: ''
-    })
+    });
 
-    const [err, setErr] = useState(null)
+    const [err, setErr] = useState(null);
 
     const handleSubmit = async e => {
         e.preventDefault();

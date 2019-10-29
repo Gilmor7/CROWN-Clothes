@@ -21,7 +21,6 @@ const SignUp = () => {
     const [err, setErr] = useState(null);
 
     const handleSubmit = async e => {
-        console.log('handle submit on signup')
         e.preventDefault();
 
         const { displayName, email, password, confirmPassword } = state;
