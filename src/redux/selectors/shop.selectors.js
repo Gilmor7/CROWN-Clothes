@@ -9,15 +9,15 @@ export const shopCollectionsSelector = createSelector(
 
 export const shopCollectionsToPreview = createSelector(
     shopCollectionsSelector,
-    collections => Object.values(collections)
+    collections => collections ? Object.values(collections) : []
 );
 
 export const collectionSelector = collectionUrlParam => createSelector(
     shopCollectionsSelector,
-    collections => collections[collectionUrlParam]
+    collections => collections ? collections[collectionUrlParam] : null
 );
 
 export const shopCollectionExist = createSelector(
     shopCollectionsSelector,
     collections => collections !== null
-)
+);
