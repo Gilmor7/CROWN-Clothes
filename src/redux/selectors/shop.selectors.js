@@ -21,3 +21,13 @@ export const shopCollectionExist = createSelector(
     shopCollectionsSelector,
     collections => collections !== null
 );
+
+export const selectCollectionsFetching = createSelector(
+    shopSelector,
+    shop => shop.isFetching
+);
+
+export const selectIsCollectionsLoaded = createSelector(
+    shopSelector,
+    shop => !!shop.collections
+)
