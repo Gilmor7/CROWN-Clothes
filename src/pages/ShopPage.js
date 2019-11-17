@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 //redux imports
 import { connect } from 'react-redux';
-import { fetchCollectionsAsync } from '../redux/actions/shop.actions';
+import { fetchCollectionsStart } from '../redux/actions/shop.actions';
 import { selectCollectionsFetching, selectIsCollectionsLoaded } from '../redux/selectors/shop.selectors';
 
 import withSpinner from '../components/withSpinner.HOC';
@@ -48,7 +48,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollections: () => dispatch(fetchCollectionsAsync())
+    fetchCollections: () => dispatch(fetchCollectionsStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
